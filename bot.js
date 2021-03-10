@@ -3,9 +3,16 @@ const Twit = require("twit");
 const request = require("request");
 const fs = require("fs");
 
-const config = require('./config.js');
+// const config = require('./config.js');
 
-var T = new Twit(config);
+// process.env['CONSUMER_KEY']
+
+var T = new Twit({
+  consumer_key:         process.env['CONSUMER_KEY'],
+  consumer_secret:      process.env['CONSUMER_SECRET'],
+  access_token:         process.env['ACCESS_TOKEN'],
+  access_token_secret:  process.env['ACCESS_TOKEN_SECRET']
+});
 
 var holiday_url = "https://date.nager.at/Api/v2/NextPublicHolidaysWorldwide";
 var countryCode = "";
